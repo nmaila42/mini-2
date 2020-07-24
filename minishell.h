@@ -1,28 +1,53 @@
 #ifndef MINISHELL_H
-# define MINISHELL_H
+#define MINISHELL_H
 
-#include <sys/wait.h>
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
-#include "get_next_line/get_next_line.h"
 
+# include "libft/libft.h"
+# include <dirent.h>
+# include <limits.h>
+# include <sys/wait.h>
+
+# define SEARCH_OFF	0
+# define SEARCH_ON	01
+# define SEARCH_VAL	02
+
+// errono accompanied by error message bellow
+# define NONFATAL_ME 0
+# define FATAL_ME	1
+
+// display this message before terminating with error value above
+# define ME_CLSERR	"error closing directory stream"
+# define ME_MEMERR	"error allocating memory"
+
+// evirronment varriavle array of sizze arg_max
 # ifndef ARG_MAX
 #  define ARG_MAX (256 * 1024)
 # endif
 
-char            *ft_readline();
-int             ft_launch(char **args);
-int             ft_execute(char **args);
-char	        **ft_split(char *str);
+// storts environment Variables, keys = value
+char		**g_env;
+
+char		*param_search(char **env, char *env_var, char *arg, int flag);
+char		**ft_strarrdup(char **arr);
+size_t		ft_strarrlen(char **arr);
+void		ft_strstrdel(char ***del_me);
+char		**ft_strarrrealloc(char **arr, char *str);
+void		ft_setenv(char *var, char *value, size_t varlen, size_t vallen);
+void		ft_unsetenv(char *v_name);
+int			ft_cd(char *path);
+char		**parser(char *input);
+void		expand(char **args);
+
+int			unsetenv_checker(char **args);
+int			setenv_checker(char **args);
+int			ft_echo(char **args);
 
 
-//to bo contined in time
-//void            echo_out(char **str, int pos);
-//void            qoute_checker(char **input, char *f);
-//void            ft_cd(char **args);
-//void            exit_shell(void);
-//int			  echo_builtin(char **args);
+void	    mini_arr_error(char *err, char ***arrdel, int f);
+void	    mini_error(char *err, int f);
+int			print_env(char **ep);
+
+int			access_control(char *str);
+int			access_control_f(char *str);
+
 #endif
