@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nmaila <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 10:31:24 by nmaila            #+#    #+#             */
+/*   Updated: 2019/09/06 09:35:41 by nmaila           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
@@ -66,14 +78,12 @@ char				*ft_strtrim(char const *s);
 char				*ft_strrealloc(char *s1, char *s2);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
-t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 char				*ft_arrstr(char **arr, char *str);
 int					get_next_line(const int fd, char **line);
 int					ft_isspace(int c);
+char				**ft_strarrdup(char **arr);
+size_t				ft_strarrlen(char **arr);
+void				ft_strstrdel(char ***del_me);
+char				**ft_strarrrealloc(char **arr, char *str);
 
 #endif
