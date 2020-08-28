@@ -20,9 +20,9 @@
 # define ME_MEMERR	"error allocating memory"
 
 // evirronment varriavle array of sizze arg_max
-# ifndef ARG_MAX
+//# ifndef ARG_MAX
 #  define ARG_MAX (256 * 1024)
-# endif
+//# endif
 
 // storts environment Variables, keys = value
 char		**g_env;
