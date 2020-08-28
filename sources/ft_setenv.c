@@ -1,4 +1,4 @@
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 static void	editor(char *value, size_t vallen, char *newstr, int index)
 {

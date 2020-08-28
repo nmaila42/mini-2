@@ -1,4 +1,4 @@
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 int				ft_echo(char **args)
 {
@@ -8,6 +8,7 @@ int				ft_echo(char **args)
 	flag = 0;
 	i = 0;
 	args++;
+	//n -lfage ==. do not append new line
 	if (*args && (*args)[i++] == '-')
 	{
 		while ((*args)[i] == 'n')

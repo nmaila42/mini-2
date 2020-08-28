@@ -1,4 +1,4 @@
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 static void	getpath(char **args, char **path)
 {
@@ -14,7 +14,6 @@ static void	getpath(char **args, char **path)
 	ft_strcpy(*path, tmp);
 	free(tmp);
 }
-
 
 static int	run(char **args, int status)
 {
@@ -32,7 +31,7 @@ static int	run(char **args, int status)
 		execve(path, args, g_env);
 		ft_putstr("Error opening: ");
 		ft_putendl(*args);
-		exit(EXIT_FAILURE);
+		exit (EXIT_FAILURE);
 	}
 	wait(&status);
 	return (1);
@@ -74,7 +73,7 @@ static void	msh_read(void)
 	input = NULL;
 	while (status)
 	{
-		ft_putstr("minishell > ");
+		ft_putstr("msh > ");
 		if (get_next_line(STDIN_FILENO, &input) == -1)
 			mini_error("error reading stdin.", NONFATAL_ME);
 		input_trimed = ft_strtrim(input);
