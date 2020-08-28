@@ -1,0 +1,12 @@
+==1845==   total heap usage: 575 allocs, 574 frees, 52,933,440 bytes allocated
+==1845==
+==1845== 6 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==1845==    at 0x4C2FB6B: malloc (vg_replace_malloc.c:299)
+==1845==    by 0x10A9B1: ft_strdup (in /mnt/c/wsl/minishell/minishell)
+==1845==    by 0x108F4A: bin_search (parameter_search.c:20)
+==1845==    by 0x108FE6: path_search (parameter_search.c:33)
+==1845==    by 0x109137: path_start (parameter_search.c:62)
+==1845==    by 0x10921E: env_search (parameter_search.c:81)
+==1845==    by 0x1092A5: param_search (parameter_search.c:92)
+==1845==    by 0x108A8B: getpath (main.c:7)
+==1845==    by 0x108B32: run (main.c:25)

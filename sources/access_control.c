@@ -1,8 +1,10 @@
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
-//permission to acces the files and dereference symbolik link
-//F_OK --. existence of a file
-//X_OK -- file exists and grants read, write, and execute permissions
+/*
+** permission to acces the files and dereference symbolik link
+** F_OK --. existence of a file
+** X_OK -- file exists and grants read, write, and execute permissions
+*/
 
 int		access_control(char *str)
 {

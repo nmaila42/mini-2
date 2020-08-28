@@ -1,5 +1,9 @@
-#include "../minishell.h"
-
+#include "../includes/minishell.h"
+/*
+** opens a directory returns and returns a ptr 1st entry of dirctory 
+** null is return if the above fails
+** reads the entris in a dir and returns null upon complition or error
+*/
 static char	*bin_search(char *path, char *arg, int n)
 {
 	struct dirent	*bins;
@@ -9,10 +13,10 @@ static char	*bin_search(char *path, char *arg, int n)
 	ft_strncpy(location, path, n);
 	location[n] = '/';
 	location[n + 1] = 0;
-	path_to_bin = opendir(location); //opens a directory returns and returns a ptr 1st entry of dirctory 
-	if (path_to_bin == NULL) // null is return apon the above failuire
+	path_to_bin = opendir(location);
+	if (path_to_bin == NULL)
 		return (NULL);
-	while ((bins = readdir(path_to_bin)) != NULL) //reads the entris in a dir and returns null upon complion or error
+	while ((bins = readdir(path_to_bin)) != NULL)
 	{
 		if (ft_strcmp(bins->d_name, arg) == 0)
 		{
@@ -25,13 +29,15 @@ static char	*bin_search(char *path, char *arg, int n)
 		mini_error(ME_CLSERR, FATAL_ME);
 	return (NULL);
 }
-
+//path managaement still needs a  lot of work --- see it after a while
 static char	*path_search(char *arg, char *start, char *end)
 {
 	char	*path;
+	//char	*temp;
 
 	if ((path = bin_search(start, arg, end - start)))
-		return (path);
+		//temp = ft_strdup(path); memory leaks here i think
+		return (ft_strdup(path));
 	while (!path)
 	{
 		start = end;
